@@ -7,10 +7,14 @@ import { createStore, applyMiddleware } from "redux";
 import reduxThunk from "redux-thunk";
 
 import reducers from "./Redux/reducers";
+
+import GlobalStyle from "./components/GlobalStyles";
+
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
 ReactDOM.render(
     <Provider store={store}>
+        <GlobalStyle />
         <App />
     </Provider>,
     document.getElementById("app")

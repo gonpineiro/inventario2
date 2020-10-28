@@ -1,12 +1,17 @@
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
+import Layout from "./Layout";
 import Users from "./Users";
 
 const App = () => {
     return (
         <BrowserRouter>
-            <Route exact path="/usuarios" component={Users}></Route>
+            <Layout>
+                <Switch>
+                    <Route exact path="/usuarios" component={Users}></Route>
+                </Switch>
+            </Layout>
         </BrowserRouter>
     );
 };
