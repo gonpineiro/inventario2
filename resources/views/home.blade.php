@@ -7,6 +7,10 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    
+    @if (auth()->check())
+    <meta name="api-token" content="{{ auth()->user()->api_token }}">
+    @endif
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
