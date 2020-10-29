@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Models\User;
 use Illuminate\Support\Str;
 /* use Illuminate\Http\Request; */
-use App\Http\Requests\UserStore;
-use App\Http\Requests\UserUpdate;
+use App\Http\Requests\User\UserStore;
+use App\Http\Requests\User\UserUpdate;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Resources\User\UserResource;
