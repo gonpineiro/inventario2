@@ -8,7 +8,7 @@ import reduxThunk from "redux-thunk";
 
 import reducers from "./Redux/reducers";
 
-import GlobalStyle from "./components/GlobalStyles";
+import GlobalStyle from "./components/Global/GlobalStyles";
 
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 

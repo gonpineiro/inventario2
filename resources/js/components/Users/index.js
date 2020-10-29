@@ -1,8 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+import { userColums } from "./columns";
+
+import { Container } from "../Global/styles";
+import SubLayout from "../Layout/SubLayout";
+
+import Table from "../Global/Table";
+import Form from "./Form";
+
 import * as usersActions from "../../Redux/actions/usersActions";
-import { Container } from "../GlobalStyles";
 
 class Users extends Component {
     async componentDidMount() {
@@ -13,40 +20,41 @@ class Users extends Component {
 
         if (!users.lenght) bringAll();
     }
+
+    content() {
+        const {
+            bringAll,
+            bringOne,
+            bringOneDelete,
+            data: { users },
+            loadings: { tableLoading },
+            rechargeTable,
+            stateForm
+        } = this.props;
+
+        if (rechargeTable) bringAll();
+
+        if (tableLoading && !users.lenght) return "Loading";
+
+        return (
+            <Table
+                rows={users}
+                columns={userColums}
+                bringOne={bringOne}
+                bringOneDelete={bringOneDelete}
+                stateForm={stateForm}
+            />
+        );
+    }
+
     render() {
+        const { stateForm, cancel } = this.props;
         return (
             <Container>
-                <h1>
-                    My First Bootstra class. lorem This part is inside a
-                    .container class. lorem class. lorem This part is inside a
-                    .container class. lorem class. lorem This part is inside a
-                    .container class. lorem class. lorem This part is inside a
-                    .container class. lorem class. lorem This part is inside a
-                    .container class. lorem class. lorem This part is inside a
-                    .container class. lorem class. lorem This part is inside a
-                    .container class. lorem class. lorem This part is inside a
-                    .container class. loremp Page
-                </h1>
-                <p>
-                    This part is inside a .container class. loremThis part is
-                    class. lorem This part is inside a .container class. lorem
-                    inside a .container class. lorem This part is inside a
-                    .container class. lorem This part is inside a .container
-                    class. lorem This part is inside a .container class. lorem
-                    class. lorem This part is inside a .container class. lorem
-                    class. lorem This part is inside a .container class. lorem
-                    class. lorem This part is inside a .container class. lorem
-                    This part is inside a .container class. lorem This part is
-                    inside a .container class. lorem
-                </p>
-                <p>
-                    The .container class provides a responsive fixed width
-                    container.
-                </p>
-                <p>
-                    Resize the browser window to see that its width (max-width)
-                    will change at different breakpoints.
-                </p>
+                <SubLayout title="Usuarios" changeForm={cancel}>
+                    {stateForm === "table" && this.content()}
+                    {stateForm !== "table" && <Form />}
+                </SubLayout>
             </Container>
         );
     }

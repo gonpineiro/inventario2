@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import { NavLink as LinkRouter } from "react-router-dom";
 
+import { borderGrey } from "../Global/styles";
+
+/* index.js */
 export const AppBar = styled.nav`
     width: 100%;
     height: 56px;
@@ -52,4 +55,43 @@ export const LinkTitle = styled(LinkRouter)`
         padding-left: 15px;
         background-color: #ddd;
     }
+`;
+
+/* SubLayout.js */
+export const ContainerBody = styled.div`
+    padding: 10px 10px;
+`;
+
+export const LayoutContainer = styled.div`
+    padding-top: 20px;
+`;
+
+export const TitleContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    padding-left: 7px;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 15px;
+    border: ${borderGrey};
+    svg {
+        font-size: 2rem;
+        margin: auto 0 auto 10px;
+        opacity: 0.7;
+        cursor: pointer;
+        transition: opacity 1s, transform 1s;
+        :hover {
+            opacity: 1;
+            transform: scale(1.5);
+        }
+    }
+`;
+
+export const Title = styled.h2`
+    margin: 0 0 0 15px;
+    align-self: center;
+    opacity: 0.8;
+    border-right: ${borderGrey};
+    font-size: 1.2rem;
+    width: 200px;
 `;

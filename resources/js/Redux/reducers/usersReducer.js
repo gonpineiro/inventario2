@@ -30,7 +30,7 @@ const INITIAL_STATE = {
     },
     dataTable: false,
     rechargeTable: false,
-    stateForm: "create"
+    stateForm: "table"
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -170,7 +170,7 @@ export default (state = INITIAL_STATE, action) => {
                     generalError: "",
                     formError: ""
                 },
-                state_form: action.payload
+                stateForm: action.payload
             };
 
         case SAVE:
@@ -189,7 +189,7 @@ export default (state = INITIAL_STATE, action) => {
                     formError: ""
                 },
                 rechargeTable: true,
-                stateForm: "create"
+                stateForm: action.payload
             };
 
         case CANCEL:

@@ -15,7 +15,6 @@ class UserUpdate extends FormRequest
     {
         return [
             'name' => 'required|min:3|max:20',
-            'password' => 'required',
         ];
     }
 
@@ -25,8 +24,6 @@ class UserUpdate extends FormRequest
             'name.required' => 'Requerido',
             'name.min' => 'El minimo es 3 caracteres.',
             'name.max' => 'El maximo es 20 caracteres.',
-
-            'password.required' => 'Requerido.',
         ];
     }
 }

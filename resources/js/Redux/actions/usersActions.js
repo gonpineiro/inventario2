@@ -22,12 +22,11 @@ export const bringAll = () => async dispatch => {
     dispatch({
         type: RECHARGE
     });
-    console.log('asd');
     try {
         const response = await axios.get(URL + "user");
         dispatch({
             type: BRING_ALL,
-            payload: response.data
+            payload: response.data.data
         });
     } catch (error) {
         const errors = error.response.data.errors;
@@ -35,14 +34,13 @@ export const bringAll = () => async dispatch => {
     }
 };
 
-export const bringOne = id => async dispatch => {
+export const bringOne = (id, stateForm = "edit") => async dispatch => {
     dispatch({
         type: FORM_LOADING
     });
-
     dispatch({
         type: CHANGE_STATE_FORM,
-        payload: "edit"
+        payload: stateForm
     });
 
     try {
@@ -50,7 +48,7 @@ export const bringOne = id => async dispatch => {
 
         dispatch({
             type: BRING_ONE,
-            payload: response.data
+            payload: response.data.data
         });
     } catch (error) {
         console.error(error);
@@ -82,16 +80,16 @@ export const add = data => async dispatch => {
     dispatch({
         type: FORM_LOADING
     });
-
     try {
         await axios.post(URL + "user", data);
 
         dispatch({
-            type: SAVE
+            type: SAVE,
+            payload: "create"
         });
     } catch (error) {
         const errors = error.response.data.errors;
-        console.log(error.response);
+        console.log(errors);
         dispatch({
             type: FORM_ERROR,
             payload: errors
@@ -108,7 +106,8 @@ export const edit = (data, id) => async dispatch => {
         await axios.put(URL + "user/" + id, data);
 
         dispatch({
-            type: SAVE
+            type: SAVE,
+            payload: "table"
         });
     } catch (error) {
         const errors = error.response.data.errors;
@@ -135,7 +134,7 @@ export const bringOneDelete = id => async dispatch => {
 
         dispatch({
             type: BRING_ONE,
-            payload: response.data
+            payload: response.data.data
         });
     } catch (error) {
         console.log(error);
@@ -144,14 +143,15 @@ export const bringOneDelete = id => async dispatch => {
 
 export const deleteOne = id => async dispatch => {
     dispatch({
-        type: LOADING
+        type: FORM_LOADING
     });
 
     try {
         await axios.delete(URL + "user/" + id);
 
         dispatch({
-            type: SAVE
+            type: SAVE,
+            payload: 'table'
         });
     } catch (error) {
         const errors = error.response.data.message;
@@ -162,8 +162,9 @@ export const deleteOne = id => async dispatch => {
     }
 };
 
-export const cancel = () => dispatch => {
+export const cancel = stateForm => dispatch => {
     dispatch({
-        type: CANCEL
+        type: CANCEL,
+        payload: stateForm
     });
 };

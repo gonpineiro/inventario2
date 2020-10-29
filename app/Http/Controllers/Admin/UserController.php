@@ -16,7 +16,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        return new UserCollection(User::all());
+        return new UserCollection(User::where('is_active', 1)->get());
     }
 
     public function store(UserStore $request)
