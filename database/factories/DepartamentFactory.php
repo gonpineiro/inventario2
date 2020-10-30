@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Client;
+use App\Models\Departament;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ClientFactory extends Factory
+class DepartamentFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Client::class;
+    protected $model = Departament::class;
 
     /**
      * Define the model's default state.
@@ -22,7 +22,11 @@ class ClientFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->company,            
+            'name' => $this->faker->name,
+            'client_id' => function () {
+                return \App\Models\Client::query()->inRandomOrder()->first()->id;
+            },
+            'observation' => $this->faker->text(20)
         ];
     }
 }

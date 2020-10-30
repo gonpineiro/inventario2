@@ -1,17 +1,18 @@
 <?php
 
-namespace App\Http\Resources\Client;
+namespace App\Http\Resources\Departament;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class ClientCollection extends ResourceCollection
+class DepartamentCollection extends ResourceCollection
 {
-    public $collects = ClientResource::class;
+    public $collects = DepartamentResource::class;
 
     public function toArray($request)
     {
         return [
             'data' => $this->collection
         ];
+
     }
 }

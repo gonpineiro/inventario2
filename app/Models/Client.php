@@ -12,4 +12,9 @@ class Client extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function departaments()
+    {
+        return $this->hasMany(Departament::class);
+    }
 }

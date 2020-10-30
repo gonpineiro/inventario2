@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Client;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Client\ClientStore;
 use App\Http\Resources\Client\ClientResource;
@@ -32,7 +31,6 @@ class ClientController extends Controller
     public function update(ClientStore $request, Client $client)
     {
         $client->update($request->all());
-
         return new ClientResource($client);
     }
     
@@ -41,6 +39,5 @@ class ClientController extends Controller
         $client = Client::find($id);
         $client->delete();
         return new ClientResource($client);
-
     }
 }
