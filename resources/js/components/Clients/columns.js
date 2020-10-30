@@ -1,14 +1,18 @@
-export const userColums = [
+export const clientColums = [
     {
         label: "#",
         field: "id",
-        sort: "asc",
+        sort: "desc",
         width: 10
     },
     {
         label: "Nombre",
         field: "name",
-        sort: "asc",
         width: 150
     },
+    {
+        label: "Acciones",
+        field: "action",
+        width: 10
+    }
 ];

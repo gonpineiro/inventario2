@@ -6,18 +6,16 @@ import { DetailsDelete } from "../../Utils/validations";
 import { ContainerDetail, FormRow, EmError, Input } from "../Global/styles";
 import ContainerButton from "../Global/ContainerButton";
 
-import * as usersActions from "../../Redux/actions/usersActions";
+import * as clientsActions from "../../Redux/actions/clientsActions";
 
 const Form = props => {
     const {
         data: {
-            user: { id, name, email, password }
+            client: { id, name }
         },
         loadings: { formLoading },
         errors: { formError },
-        changeUserName,
-        changeUserEmail,
-        changeUserPass,
+        changeClientName,
         add,
         edit,
         deleteOne,
@@ -26,7 +24,7 @@ const Form = props => {
     } = props;
 
     const save = () => {
-        const data = { id, name, email, password };
+        const data = { id, name };
         if (stateForm === "create") add(data);
         if (stateForm === "edit") edit(data, id);
         if (stateForm === "delete") deleteOne(id);
@@ -41,23 +39,8 @@ const Form = props => {
                 <EmError>{formError.name && formError.name}</EmError>
                 <Input
                     readOnly={DetailsDelete(stateForm)}
-                    onChange={ev => changeUserName(ev.target.value)}
+                    onChange={ev => changeClientName(ev.target.value)}
                     value={name || ""}
-                ></Input>
-                <label>Email</label>
-                <EmError>{formError.email && formError.email}</EmError>
-                <Input
-                    readOnly={DetailsDelete(stateForm)}
-                    onChange={ev => changeUserEmail(ev.target.value)}
-                    value={email || ""}
-                ></Input>
-                <label>Contaseña</label>
-                <EmError>{formError.password && formError.password}</EmError>
-                <Input
-                    readOnly={DetailsDelete(stateForm)}
-                    onChange={ev => changeUserPass(ev.target.value)}
-                    value={password || ""}
-                    disabled={DetailsDelete(stateForm)}
                 ></Input>
             </FormRow>
             <ContainerButton
@@ -71,6 +54,6 @@ const Form = props => {
     );
 };
 
-const mapStateToProps = reducers => reducers.usersReducer;
+const mapStateToProps = reducers => reducers.clientsReducer;
 
-export default connect(mapStateToProps, usersActions)(Form);
+export default connect(mapStateToProps, clientsActions)(Form);

@@ -77,6 +77,7 @@ const Layout = props => {
             <LinkTitle to="/permisos" activeClassName="is-active">
                 Permisos
             </LinkTitle>
+
             <Hr />
             <NavTitle>Dispositivos</NavTitle>
             <Hr />
@@ -89,6 +90,17 @@ const Layout = props => {
             <LinkTitle to="/tipos" activeClassName="is-active">
                 Tipos
             </LinkTitle>
+
+            <Hr />
+            <NavTitle>Gestion</NavTitle>
+            <Hr />
+            <LinkTitle to="/clientes" activeClassName="is-active">
+                Clientes
+            </LinkTitle>
+            <LinkTitle to="/departamentos" activeClassName="is-active">
+                Departamentos
+            </LinkTitle>
+            
             <Hr />
             <NavTitle>Usuarios Host</NavTitle>
             <Hr />

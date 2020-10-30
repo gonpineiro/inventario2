@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Layout from "./Layout";
 import Users from "./Users";
+import Clients from "./Clients";
 
 const App = () => {
     return (
@@ -10,6 +11,7 @@ const App = () => {
             <Layout>
                 <Switch>
                     <Route exact path="/usuarios" component={Users}></Route>
+                    <Route exact path="/clientes" component={Clients}></Route>
                 </Switch>
             </Layout>
         </BrowserRouter>

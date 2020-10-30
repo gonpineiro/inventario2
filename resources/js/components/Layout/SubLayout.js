@@ -1,12 +1,12 @@
 import React from "react";
 import AddIcon from "@material-ui/icons/Add";
 import TocIcon from "@material-ui/icons/Toc";
-
+import Tooltip from "@material-ui/core/Tooltip";
 import {
     LayoutContainer,
     TitleContainer,
     Title,
-    ContainerBody,
+    ContainerBody
 } from "./styles";
 
 const SubLayout = ({ children, title, changeForm }) => {
@@ -15,8 +15,12 @@ const SubLayout = ({ children, title, changeForm }) => {
             <div className="row-grid">
                 <TitleContainer className="shadow">
                     <Title>{title}</Title>
-                    <AddIcon onClick={() => changeForm("create")} />
-                    <TocIcon onClick={() => changeForm("table")} />
+                    <Tooltip title="Crear" placement="bottom">
+                        <AddIcon onClick={() => changeForm("create")} />
+                    </Tooltip>
+                    <Tooltip title="Trabla" placement="bottom">
+                        <TocIcon onClick={() => changeForm("table")} />
+                    </Tooltip>
                 </TitleContainer>
                 <ContainerBody className="shadow">{children}</ContainerBody>
             </div>

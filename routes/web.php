@@ -19,4 +19,5 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/', function () {return view('home');});
     Route::get('/usuarios', function () {return view('home');});
+    Route::get('/clientes', function () {return view('home');});
 });
