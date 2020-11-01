@@ -1,8 +1,15 @@
 import React, { Fragment } from "react";
-import { AccordionSummary, Divider } from "@material-ui/core";
+import styled from "styled-components";
+
+import {
+    AccordionSummary,
+    Divider,
+    Accordion,
+    AccordionDetails,
+    ListItem
+} from "@material-ui/core";
 
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { AccordionUi, AccordionDetailsUi, ListItemUi } from "./styles";
 
 const Acordion = ({ title, list }) => {
     const renderList = () =>
@@ -15,6 +22,19 @@ const Acordion = ({ title, list }) => {
                 </ListItemUi>
             </Fragment>
         ));
+
+    const AccordionUi = styled(Accordion)`
+        width: 100%;
+    `;
+
+    const AccordionDetailsUi = styled(AccordionDetails)`
+        flex-direction: column;
+    `;
+
+    const ListItemUi = styled(ListItem)`
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+    `;
 
     return (
         <AccordionUi disabled={!list.length}>

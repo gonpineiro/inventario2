@@ -1,9 +1,20 @@
 import React from "react";
-
-import { ContainerDetailButton, Button } from "./styles";
+import styled from "styled-components";
 
 const ContainerButton = props => {
     const { save, cancel, stateForm, styleOk, styleCancel } = props;
+
+    const ContainerDetailButton = styled.div`
+        display: flex;
+        padding: 10px;
+        margin-top: auto;
+        justify-content: space-between;
+    `;
+
+    const Button = styled.button`
+        width: 45%;
+    `;
+
     return (
         <ContainerDetailButton>
             <Button

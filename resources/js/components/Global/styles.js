@@ -1,10 +1,5 @@
 import styled from "styled-components";
 import Select from "react-select";
-import {
-    Accordion,
-    AccordionDetails,
-    ListItem
-} from "@material-ui/core";
 
 export const borderGrey = `1px solid rgba(197, 191, 191, 0.4)`;
 
@@ -50,19 +45,6 @@ export const FormRow = styled.div`
     padding: 0 10px;
 `;
 
-export const AccordionUi = styled(Accordion)`
-           width: 100%;
-       `;
-
-export const AccordionDetailsUi = styled(AccordionDetails)`
-    flex-direction: column;
-`;
-
-export const ListItemUi = styled(ListItem)`
-           display: grid !important;
-           grid-template-columns: 1fr 1fr !important;
-       `;
-
 export const EmError = styled.em`
     font-size: 85%;
     color: #e33422;
@@ -86,15 +68,4 @@ export const Input = styled.input`
 export const ReactSelect = styled(Select)`
     width: 100%;
     background: transparent;
-`;
-
-export const ContainerDetailButton = styled.div`
-    display: flex;
-    padding: 10px;
-    margin-top: auto;
-    justify-content: space-between;
-`;
-
-export const Button = styled.button`
-    width: 45%;
 `;
