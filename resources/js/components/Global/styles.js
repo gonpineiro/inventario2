@@ -1,7 +1,10 @@
-import styled, { keyframes } from "styled-components";
-import { Link as LinkRouter } from "react-router-dom";
+import styled from "styled-components";
 import Select from "react-select";
-/* import Select from "react-select"; */
+import {
+    Accordion,
+    AccordionDetails,
+    ListItem
+} from "@material-ui/core";
 
 export const borderGrey = `1px solid rgba(197, 191, 191, 0.4)`;
 
@@ -46,6 +49,19 @@ export const FormRow = styled.div`
     margin-bottom: 10px;
     padding: 0 10px;
 `;
+
+export const AccordionUi = styled(Accordion)`
+           width: 100%;
+       `;
+
+export const AccordionDetailsUi = styled(AccordionDetails)`
+    flex-direction: column;
+`;
+
+export const ListItemUi = styled(ListItem)`
+           display: grid !important;
+           grid-template-columns: 1fr 1fr !important;
+       `;
 
 export const EmError = styled.em`
     font-size: 85%;

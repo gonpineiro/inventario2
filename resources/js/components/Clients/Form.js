@@ -5,13 +5,14 @@ import { DetailsDelete } from "../../Utils/validations";
 
 import { ContainerDetail, FormRow, EmError, Input } from "../Global/styles";
 import ContainerButton from "../Global/ContainerButton";
+import Accordion from "../Global/Accordion";
 
 import * as clientsActions from "../../Redux/actions/clientsActions";
 
 const Form = props => {
     const {
         data: {
-            client: { id, name }
+            client: { id, name, departaments }
         },
         loadings: { formLoading },
         errors: { formError },
@@ -30,6 +31,17 @@ const Form = props => {
         if (stateForm === "delete") deleteOne(id);
     };
 
+    const departamentsRender = () => {
+        if (departaments)
+            return (
+                <FormRow>
+                    <Accordion title="Departamentos" list={departaments} />
+                </FormRow>
+            );
+
+        return "";
+    };
+
     if (formLoading) return "Loading";
 
     return (
@@ -43,6 +55,7 @@ const Form = props => {
                     value={name || ""}
                 ></Input>
             </FormRow>
+            {departamentsRender()}
             <ContainerButton
                 save={save}
                 cancel={cancel}
