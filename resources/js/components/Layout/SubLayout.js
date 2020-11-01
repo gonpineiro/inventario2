@@ -18,7 +18,7 @@ const SubLayout = ({ children, title, changeForm }) => {
                     <Tooltip title="Crear" placement="bottom">
                         <AddIcon onClick={() => changeForm("create")} />
                     </Tooltip>
-                    <Tooltip title="Trabla" placement="bottom">
+                    <Tooltip title="Tabla" placement="bottom">
                         <TocIcon onClick={() => changeForm("table")} />
                     </Tooltip>
                 </TitleContainer>

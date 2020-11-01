@@ -1,28 +1,32 @@
 import {
     BRING_ALL,
+    BRING_ALL_CLIENTS,
     BRING_ONE,
     TABLE_LOADING,
     FORM_LOADING,
+    CLIENT_LOADING,
     GENERAL_ERROR,
     FORM_ERROR,
-    CHANGE_USER_ID,
-    CHANGE_USER_NAME,
-    CHANGE_USER_EMAIL,
-    CHANGE_USER_PASS,
+    CHANGE_DEPARTAMENT_ID,
+    CHANGE_DEPARTAMENT_NAME,
+    CHANGE_CLIENT_ID,
+    CHANGE_DEPARTAMENT_OBVERVATION,
     CHANGE_STATE_FORM,
     SAVE,
     CANCEL,
     RECHARGE
-} from "../types/userTypes";
+} from "../types/departamentTypes";
 
 const INITIAL_STATE = {
     data: {
-        users: [],
-        user: []
+        departaments: [],
+        departament: [],
+        clients: []
     },
     loadings: {
         tableLoading: false,
-        formLoading: false
+        formLoading: false,
+        clientsLoading: false
     },
     errors: {
         generalError: "",
@@ -40,11 +44,29 @@ export default (state = INITIAL_STATE, action) => {
                 ...state,
                 data: {
                     ...state.data,
-                    users: action.payload
+                    departaments: action.payload
                 },
                 loadings: {
                     ...state.loadings,
                     tableLoading: false
+                },
+                errors: {
+                    ...state.errors,
+                    formError: []
+                },
+                rechargeTable: false
+            };
+
+        case BRING_ALL_CLIENTS:
+            return {
+                ...state,
+                data: {
+                    ...state.data,
+                    clients: action.payload
+                },
+                loadings: {
+                    ...state.loadings,
+                    clientsLoading: false
                 },
                 errors: {
                     ...state.errors,
@@ -58,10 +80,10 @@ export default (state = INITIAL_STATE, action) => {
                 ...state,
                 data: {
                     ...state.data,
-                    user: action.payload
+                    departament: action.payload
                 },
                 loadings: {
-                    tableLoading: false,
+                    ...state.loadings,
                     formLoading: false
                 },
                 errors: {
@@ -85,7 +107,16 @@ export default (state = INITIAL_STATE, action) => {
                 ...state,
                 loadings: {
                     ...state.loadings,
-                    formLoading: true,
+                    formLoading: true
+                }
+            };
+
+        case CLIENT_LOADING:
+            return {
+                ...state,
+                loadings: {
+                    ...state.loadings,
+                    clientsLoading: true
                 }
             };
 
@@ -95,11 +126,11 @@ export default (state = INITIAL_STATE, action) => {
                 errors: {
                     ...state.errors,
                     generalError: action.payload
-                },
-                loadings: {
+                }
+                /* loadings: {
                     formLoading: false,
                     tableLoading: false
-                }
+                } */
             };
 
         case FORM_ERROR:
@@ -110,55 +141,55 @@ export default (state = INITIAL_STATE, action) => {
                     formError: action.payload
                 },
                 loadings: {
+                    ...state.loadings,
                     formLoading: false,
-                    tableLoading: false
                 }
             };
 
-        case CHANGE_USER_ID:
+        case CHANGE_DEPARTAMENT_ID:
             return {
                 ...state,
                 data: {
                     ...state.data,
-                    user: {
-                        ...state.data.user,
+                    departament: {
+                        ...state.data.departament,
                         id: action.payload
                     }
                 }
             };
 
-        case CHANGE_USER_NAME:
+        case CHANGE_DEPARTAMENT_NAME:
             return {
                 ...state,
                 data: {
                     ...state.data,
-                    user: {
-                        ...state.data.user,
+                    departament: {
+                        ...state.data.departament,
                         name: action.payload
                     }
                 }
             };
 
-        case CHANGE_USER_EMAIL:
+        case CHANGE_CLIENT_ID:
             return {
                 ...state,
                 data: {
                     ...state.data,
-                    user: {
-                        ...state.data.user,
-                        email: action.payload
+                    departament: {
+                        ...state.data.departament,
+                        client_id: action.payload
                     }
                 }
             };
 
-        case CHANGE_USER_PASS:
+        case CHANGE_DEPARTAMENT_OBVERVATION:
             return {
                 ...state,
                 data: {
                     ...state.data,
-                    user: {
-                        ...state.data.user,
-                        password: action.payload
+                    departament: {
+                        ...state.data.departament,
+                        observation: action.payload
                     }
                 }
             };
@@ -178,11 +209,11 @@ export default (state = INITIAL_STATE, action) => {
                 ...state,
                 data: {
                     ...state.data,
-                    user: []
+                    departament: []
                 },
                 loadings: {
-                    formLoading: false,
-                    tableLoading: false
+                    ...state.loadings,
+                    formLoading: false
                 },
                 errors: {
                     generalError: "",
@@ -197,12 +228,12 @@ export default (state = INITIAL_STATE, action) => {
                 ...state,
                 data: {
                     ...state.data,
-                    user: []
+                    departament: []
                 },
-                loadings: {
+                /* loadings: {
                     formLoading: false,
                     tableLoading: false
-                },
+                }, */
                 errors: {
                     generalError: "",
                     formError: ""

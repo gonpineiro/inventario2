@@ -1,23 +1,31 @@
 import React from "react";
 import { connect } from "react-redux";
 
+import { searchInObj } from "../../Utils/functions";
 import { DetailsDelete } from "../../Utils/validations";
 
-import { ContainerDetail, FormRow, EmError, Input } from "../Global/styles";
+import {
+    ContainerDetail,
+    FormRow,
+    EmError,
+    Input,
+    ReactSelect
+} from "../Global/styles";
 import ContainerButton from "../Global/ContainerButton";
 
-import * as usersActions from "../../Redux/actions/usersActions";
+import * as departamentsActions from "../../Redux/actions/departamentsActions";
 
 const Form = props => {
     const {
         data: {
-            user: { id, name, email, password }
+            departament: { id, name, client_id, observation },
+            clients
         },
-        loadings: { formLoading },
+        loadings: { formLoading, clientsLoading },
         errors: { formError },
-        changeUserName,
-        changeUserEmail,
-        changeUserPass,
+        changeDepartamentName,
+        changeClientId,
+        changeDepartamentObservation,
         add,
         edit,
         deleteOne,
@@ -26,14 +34,13 @@ const Form = props => {
     } = props;
 
     const save = () => {
-        const data = { id, name, email, password };
+        const data = { id, name, client_id, observation };
         if (stateForm === "create") add(data);
         if (stateForm === "edit") edit(data, id);
         if (stateForm === "delete") deleteOne(id);
     };
 
     if (formLoading) return "Loading";
-
     return (
         <ContainerDetail>
             <FormRow>
@@ -41,22 +48,28 @@ const Form = props => {
                 <EmError>{formError.name && formError.name}</EmError>
                 <Input
                     readOnly={DetailsDelete(stateForm)}
-                    onChange={ev => changeUserName(ev.target.value)}
+                    onChange={ev => changeDepartamentName(ev.target.value)}
                     value={name || ""}
                 ></Input>
-                <label>Email</label>
-                <EmError>{formError.email && formError.email}</EmError>
+                <label>Cliente</label>
+                <EmError>{formError.client_id && formError.client_id}</EmError>
+                <ReactSelect
+                    value={searchInObj(clients, client_id)}
+                    isDisabled={DetailsDelete(stateForm) || clientsLoading}
+                    onChange={ev => changeClientId(ev.value)}
+                    options={clients}
+                    isLoading={clientsLoading}
+                />
+                <label>Observación</label>
+                <EmError>
+                    {formError.observation && formError.observation}
+                </EmError>
                 <Input
                     readOnly={DetailsDelete(stateForm)}
-                    onChange={ev => changeUserEmail(ev.target.value)}
-                    value={email || ""}
-                ></Input>
-                <label>Contaseña</label>
-                <EmError>{formError.password && formError.password}</EmError>
-                <Input
-                    readOnly={DetailsDelete(stateForm)}
-                    onChange={ev => changeUserPass(ev.target.value)}
-                    value={password || ""}
+                    onChange={ev =>
+                        changeDepartamentObservation(ev.target.value)
+                    }
+                    value={observation || ""}
                     disabled={DetailsDelete(stateForm)}
                 ></Input>
             </FormRow>
@@ -71,6 +84,6 @@ const Form = props => {
     );
 };
 
-const mapStateToProps = reducers => reducers.usersReducer;
+const mapStateToProps = reducers => reducers.departamentsReducer;
 
-export default connect(mapStateToProps, usersActions)(Form);
+export default connect(mapStateToProps, departamentsActions)(Form);

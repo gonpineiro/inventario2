@@ -1,5 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { Link as LinkRouter } from "react-router-dom";
+import Select from "react-select";
 /* import Select from "react-select"; */
 
 export const borderGrey = `1px solid rgba(197, 191, 191, 0.4)`;
@@ -64,6 +65,11 @@ export const Input = styled.input`
     line-height: 1.6;
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
+`;
+
+export const ReactSelect = styled(Select)`
+    width: 100%;
+    background: transparent;
 `;
 
 export const ContainerDetailButton = styled.div`

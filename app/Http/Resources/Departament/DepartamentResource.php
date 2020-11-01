@@ -11,6 +11,7 @@ class DepartamentResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'client_id' => $this->client_id,
             'client' => $this->client->name,
             'observation' => $this->observation,
         ];

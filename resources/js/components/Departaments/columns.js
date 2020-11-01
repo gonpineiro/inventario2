@@ -1,4 +1,4 @@
-export const userColums = [
+export const departamentColums = [
     {
         label: "#",
         field: "id",
@@ -12,8 +12,14 @@ export const userColums = [
         width: 150
     },
     {
-        label: "Correo",
-        field: "email",
+        label: "Cliente",
+        field: "client",
+        sort: "asc",
+        width: 150
+    },
+    {
+        label: "Observación",
+        field: "observation",
         sort: "asc",
         width: 150
     },

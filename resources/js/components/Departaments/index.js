@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { userColums } from "./columns";
+import { departamentColums } from "./columns";
 
 import { Container } from "../Global/styles";
 import SubLayout from "../Layout/SubLayout";
@@ -9,16 +9,18 @@ import SubLayout from "../Layout/SubLayout";
 import Table from "../Global/Table";
 import Form from "./Form";
 
-import * as usersActions from "../../Redux/actions/usersActions";
+import * as departamentsActions from "../../Redux/actions/departamentsActions";
 
-class Users extends Component {
+class Departaments extends Component {
     async componentDidMount() {
         const {
             bringAll,
-            data: { users }
+            bringAllClients,
+            data: { departaments }
         } = this.props;
 
-        if (!users.lenght) bringAll();
+        if (!departaments.lenght) bringAll();
+        bringAllClients();
     }
 
     content() {
@@ -26,7 +28,7 @@ class Users extends Component {
             bringAll,
             bringOne,
             bringOneDelete,
-            data: { users },
+            data: { departaments },
             loadings: { tableLoading },
             rechargeTable,
             stateForm
@@ -34,12 +36,12 @@ class Users extends Component {
 
         if (rechargeTable) bringAll();
 
-        if (tableLoading && !users.lenght) return "Loading";
+        if (tableLoading && !departaments.lenght) return "Loading";
 
         return (
             <Table
-                rows={users}
-                columns={userColums}
+                rows={departaments}
+                columns={departamentColums}
                 bringOne={bringOne}
                 bringOneDelete={bringOneDelete}
                 stateForm={stateForm}
@@ -51,7 +53,7 @@ class Users extends Component {
         const { stateForm, cancel } = this.props;
         return (
             <Container>
-                <SubLayout title="Usuarios" changeForm={cancel}>
+                <SubLayout title="Departamentos" changeForm={cancel}>
                     {stateForm === "table" && this.content()}
                     {stateForm !== "table" && <Form />}
                 </SubLayout>
@@ -60,6 +62,6 @@ class Users extends Component {
     }
 }
 
-const mapStateToProps = reducers => reducers.usersReducer;
+const mapStateToProps = reducers => reducers.departamentsReducer;
 
-export default connect(mapStateToProps, usersActions)(Users);
+export default connect(mapStateToProps, departamentsActions)(Departaments);
