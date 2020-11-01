@@ -7,7 +7,6 @@ import {
     CLIENT_LOADING,
     GENERAL_ERROR,
     FORM_ERROR,
-    CHANGE_DEPARTAMENT_ID,
     CHANGE_DEPARTAMENT_NAME,
     CHANGE_CLIENT_ID,
     CHANGE_DEPARTAMENT_OBVERVATION,
@@ -127,10 +126,6 @@ export default (state = INITIAL_STATE, action) => {
                     ...state.errors,
                     generalError: action.payload
                 }
-                /* loadings: {
-                    formLoading: false,
-                    tableLoading: false
-                } */
             };
 
         case FORM_ERROR:
@@ -142,19 +137,7 @@ export default (state = INITIAL_STATE, action) => {
                 },
                 loadings: {
                     ...state.loadings,
-                    formLoading: false,
-                }
-            };
-
-        case CHANGE_DEPARTAMENT_ID:
-            return {
-                ...state,
-                data: {
-                    ...state.data,
-                    departament: {
-                        ...state.data.departament,
-                        id: action.payload
-                    }
+                    formLoading: false
                 }
             };
 
@@ -230,10 +213,6 @@ export default (state = INITIAL_STATE, action) => {
                     ...state.data,
                     departament: []
                 },
-                /* loadings: {
-                    formLoading: false,
-                    tableLoading: false
-                }, */
                 errors: {
                     generalError: "",
                     formError: ""

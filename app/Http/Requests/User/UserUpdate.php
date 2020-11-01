@@ -14,7 +14,7 @@ class UserUpdate extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:3|max:20',
+            'name' => 'required|min:3|max:100',
         ];
     }
 
@@ -23,7 +23,7 @@ class UserUpdate extends FormRequest
         return [
             'name.required' => 'Requerido',
             'name.min' => 'El minimo es 3 caracteres.',
-            'name.max' => 'El maximo es 20 caracteres.',
+            'name.max' => 'El maximo es 100 caracteres.',
         ];
     }
 }

@@ -5,7 +5,6 @@ import {
     FORM_LOADING,
     GENERAL_ERROR,
     FORM_ERROR,
-    CHANGE_USER_ID,
     CHANGE_USER_NAME,
     CHANGE_USER_EMAIL,
     CHANGE_USER_PASS,
@@ -61,7 +60,7 @@ export default (state = INITIAL_STATE, action) => {
                     user: action.payload
                 },
                 loadings: {
-                    tableLoading: false,
+                    ...state.loadings,
                     formLoading: false
                 },
                 errors: {
@@ -85,7 +84,7 @@ export default (state = INITIAL_STATE, action) => {
                 ...state,
                 loadings: {
                     ...state.loadings,
-                    formLoading: true,
+                    formLoading: true
                 }
             };
 
@@ -95,10 +94,6 @@ export default (state = INITIAL_STATE, action) => {
                 errors: {
                     ...state.errors,
                     generalError: action.payload
-                },
-                loadings: {
-                    formLoading: false,
-                    tableLoading: false
                 }
             };
 
@@ -110,20 +105,8 @@ export default (state = INITIAL_STATE, action) => {
                     formError: action.payload
                 },
                 loadings: {
-                    formLoading: false,
-                    tableLoading: false
-                }
-            };
-
-        case CHANGE_USER_ID:
-            return {
-                ...state,
-                data: {
-                    ...state.data,
-                    user: {
-                        ...state.data.user,
-                        id: action.payload
-                    }
+                    ...state.loadings,
+                    formLoading: false
                 }
             };
 
@@ -181,8 +164,8 @@ export default (state = INITIAL_STATE, action) => {
                     user: []
                 },
                 loadings: {
-                    formLoading: false,
-                    tableLoading: false
+                    ...state.loadings,
+                    formLoading: false
                 },
                 errors: {
                     generalError: "",
@@ -198,10 +181,6 @@ export default (state = INITIAL_STATE, action) => {
                 data: {
                     ...state.data,
                     user: []
-                },
-                loadings: {
-                    formLoading: false,
-                    tableLoading: false
                 },
                 errors: {
                     generalError: "",

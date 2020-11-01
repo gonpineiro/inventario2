@@ -14,7 +14,7 @@ class UserStore extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:3|max:20',
+            'name' => 'required|min:3|max:100',
             'email' => 'required|email|min:5|max:150|unique:users',
             'password' => 'required',
         ];
@@ -25,7 +25,7 @@ class UserStore extends FormRequest
         return [
             'name.required' => 'Requerido',
             'name.min' => 'El minimo es 3 caracteres.',
-            'name.max' => 'El maximo es 20 caracteres.',
+            'name.max' => 'El maximo es 100 caracteres.',
 
             'email.required' => 'Requerido',
             'email.email' => 'Formato Erroneo.',

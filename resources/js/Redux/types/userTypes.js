@@ -5,7 +5,6 @@ export const FORM_LOADING = "users_form_loading";
 export const GENERAL_ERROR = "users_general_error";
 export const FORM_ERROR = "users_form_error";
 
-export const CHANGE_USER_ID = "users_change_user_id";
 export const CHANGE_USER_NAME = "users_change_user_name";
 export const CHANGE_USER_EMAIL = "users_change_user_email";
 export const CHANGE_USER_PASS = "users_change_user_pass";

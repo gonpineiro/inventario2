@@ -7,7 +7,6 @@ export const CLIENT_LOADING = "departaments_form_clients";
 export const GENERAL_ERROR = "departaments_general_error";
 export const FORM_ERROR = "departaments_form_error";
 
-export const CHANGE_DEPARTAMENT_ID = "departaments_change_departament_id";
 export const CHANGE_DEPARTAMENT_NAME = "departaments_change_departament_name";
 export const CHANGE_CLIENT_ID = "departaments_change_client_id";
 export const CHANGE_DEPARTAMENT_OBVERVATION =

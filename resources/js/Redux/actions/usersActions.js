@@ -6,7 +6,6 @@ import {
     FORM_LOADING,
     GENERAL_ERROR,
     FORM_ERROR,
-    CHANGE_USER_ID,
     CHANGE_USER_NAME,
     CHANGE_USER_EMAIL,
     CHANGE_USER_PASS,
@@ -104,7 +103,6 @@ export const edit = (data, id) => async dispatch => {
 
     try {
         await axios.put(URL + "user/" + id, data);
-
         dispatch({
             type: SAVE,
             payload: "table"
