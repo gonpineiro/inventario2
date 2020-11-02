@@ -1,15 +1,13 @@
-export const BRING_ALL = "clients_bring_all";
-export const BRING_ONE = "clients_bring_one";
-export const TABLE_LOADING = "clients_table_loading";
-export const FORM_LOADING = "clients_form_loading";
-export const GENERAL_ERROR = "clients_general_error";
-export const FORM_ERROR = "clients_form_error";
+export const BRING_ALL = "marks_bring_all";
+export const BRING_ONE = "marks_bring_one";
+export const TABLE_LOADING = "marks_table_loading";
+export const FORM_LOADING = "marks_form_loading";
+export const GENERAL_ERROR = "marks_general_error";
+export const FORM_ERROR = "marks_form_error";
 
-export const CHANGE_CLIENT_NAME = "clients_change_client_name";
-export const CHANGE_CLIENT_EMAIL = "clients_change_client_email";
-export const CHANGE_CLIENT_PASS = "clients_change_client_pass";
+export const CHANGE_MARK_NAME = "marks_change_mark_name";
 
-export const CHANGE_STATE_FORM = "clients_change_state_form";
-export const SAVE = "clients_save_client";
-export const CANCEL = "clients_cancel_clients";
-export const RECHARGE = "clients_recharge_clients";
+export const CHANGE_STATE_FORM = "marks_change_state_form";
+export const SAVE = "marks_save_mark";
+export const CANCEL = "marks_cancel_marks";
+export const RECHARGE = "marks_recharge_marks";

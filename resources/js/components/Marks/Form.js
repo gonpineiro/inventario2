@@ -7,12 +7,12 @@ import { ContainerDetail, FormRow, EmError, Input } from "../Global/styles";
 import ContainerButton from "../Global/ContainerButton";
 import Accordion from "../Global/Accordion";
 
-import * as clientsActions from "../../Redux/actions/clientsActions";
+import * as marksActions from "../../Redux/actions/marksActions";
 
 const Form = props => {
     const {
         data: {
-            client: { id, name, departaments }
+            mark: { id, name, models }
         },
         loadings: { formLoading },
         errors: { formError },
@@ -31,11 +31,11 @@ const Form = props => {
         if (stateForm === "delete") deleteOne(id);
     };
 
-    const departamentsRender = () => {
-        if (departaments)
+    const modelsRender = () => {
+        if (models)
             return (
                 <FormRow>
-                    <Accordion title="Departamentos" list={departaments} />
+                    <Accordion title="Modelos" list={models} />
                 </FormRow>
             );
 
@@ -55,7 +55,7 @@ const Form = props => {
                     value={name || ""}
                 ></Input>
             </FormRow>
-            {departamentsRender()}
+            {modelsRender()}
             <ContainerButton
                 save={save}
                 cancel={cancel}
@@ -67,6 +67,6 @@ const Form = props => {
     );
 };
 
-const mapStateToProps = reducers => reducers.clientsReducer;
+const mapStateToProps = reducers => reducers.marksReducer;
 
-export default connect(mapStateToProps, clientsActions)(Form);
+export default connect(mapStateToProps, marksActions)(Form);

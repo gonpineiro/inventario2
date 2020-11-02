@@ -5,19 +5,17 @@ import {
     FORM_LOADING,
     GENERAL_ERROR,
     FORM_ERROR,
-    CHANGE_CLIENT_NAME,
-    CHANGE_CLIENT_EMAIL,
-    CHANGE_CLIENT_PASS,
+    CHANGE_MARK_NAME,
     CHANGE_STATE_FORM,
     SAVE,
     CANCEL,
     RECHARGE
-} from "../types/clientTypes";
+} from "../types/markTypes";
 
 const INITIAL_STATE = {
     data: {
-        clients: [],
-        client: []
+        marks: [],
+        mark: []
     },
     loadings: {
         tableLoading: false,
@@ -39,7 +37,7 @@ export default (state = INITIAL_STATE, action) => {
                 ...state,
                 data: {
                     ...state.data,
-                    clients: action.payload
+                    marks: action.payload
                 },
                 loadings: {
                     ...state.loadings,
@@ -57,7 +55,7 @@ export default (state = INITIAL_STATE, action) => {
                 ...state,
                 data: {
                     ...state.data,
-                    client: action.payload
+                    mark: action.payload
                 },
                 loadings: {
                     ...state.loadings,
@@ -110,38 +108,14 @@ export default (state = INITIAL_STATE, action) => {
                 }
             };
 
-        case CHANGE_CLIENT_NAME:
+        case CHANGE_MARK_NAME:
             return {
                 ...state,
                 data: {
                     ...state.data,
-                    client: {
-                        ...state.data.client,
+                    mark: {
+                        ...state.data.mark,
                         name: action.payload
-                    }
-                }
-            };
-
-        case CHANGE_CLIENT_EMAIL:
-            return {
-                ...state,
-                data: {
-                    ...state.data,
-                    client: {
-                        ...state.data.client,
-                        email: action.payload
-                    }
-                }
-            };
-
-        case CHANGE_CLIENT_PASS:
-            return {
-                ...state,
-                data: {
-                    ...state.data,
-                    client: {
-                        ...state.data.client,
-                        password: action.payload
                     }
                 }
             };
@@ -161,7 +135,7 @@ export default (state = INITIAL_STATE, action) => {
                 ...state,
                 data: {
                     ...state.data,
-                    client: []
+                    mark: []
                 },
                 loadings: {
                     ...state.loadings,
@@ -180,7 +154,7 @@ export default (state = INITIAL_STATE, action) => {
                 ...state,
                 data: {
                     ...state.data,
-                    client: []
+                    mark: []
                 },
                 errors: {
                     generalError: "",

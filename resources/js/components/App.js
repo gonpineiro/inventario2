@@ -5,6 +5,7 @@ import Layout from "./Layout";
 import Users from "./Users";
 import Clients from "./Clients";
 import Departaments from "./Departaments";
+import Marks from "./Marks";
 
 const App = () => {
     return (
@@ -18,6 +19,7 @@ const App = () => {
                         path="/departamentos"
                         component={Departaments}
                     ></Route>
+                    <Route exact path="/marcas" component={Marks}></Route>
                 </Switch>
             </Layout>
         </BrowserRouter>

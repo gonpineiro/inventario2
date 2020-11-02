@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { clientColums } from "./columns";
+import { markColums } from "./columns";
 
 import { Container } from "../Global/styles";
 import SubLayout from "../Layout/SubLayout";
@@ -9,16 +9,16 @@ import SubLayout from "../Layout/SubLayout";
 import Table from "../Global/Table";
 import Form from "./Form";
 
-import * as clientsActions from "../../Redux/actions/clientsActions";
+import * as marksActions from "../../Redux/actions/marksActions";
 
 class Clients extends Component {
     async componentDidMount() {
         const {
             bringAll,
-            data: { clients }
+            data: { marks }
         } = this.props;
 
-        if (!clients.lenght) bringAll();
+        if (!marks.lenght) bringAll();
     }
 
     content() {
@@ -26,7 +26,7 @@ class Clients extends Component {
             bringAll,
             bringOne,
             bringOneDelete,
-            data: { clients },
+            data: { marks },
             loadings: { tableLoading },
             rechargeTable,
             stateForm
@@ -34,12 +34,12 @@ class Clients extends Component {
 
         if (rechargeTable) bringAll();
 
-        if (tableLoading && !clients.lenght) return "Loading";
+        if (tableLoading && !marks.lenght) return "Loading";
 
         return (
             <Table
-                rows={clients}
-                columns={clientColums}
+                rows={marks}
+                columns={markColums}
                 bringOne={bringOne}
                 bringOneDelete={bringOneDelete}
                 stateForm={stateForm}
@@ -51,7 +51,7 @@ class Clients extends Component {
         const { stateForm, cancel } = this.props;
         return (
             <Container>
-                <SubLayout title="Clientes" changeForm={cancel}>
+                <SubLayout title="Marcas" changeForm={cancel}>
                     {stateForm === "table" && this.content()}
                     {stateForm !== "table" && <Form />}
                 </SubLayout>
@@ -60,6 +60,6 @@ class Clients extends Component {
     }
 }
 
-const mapStateToProps = reducers => reducers.clientsReducer;
+const mapStateToProps = reducers => reducers.marksReducer;
 
-export default connect(mapStateToProps, clientsActions)(Clients);
+export default connect(mapStateToProps, marksActions)(Clients);

@@ -1,4 +1,4 @@
-export const clientColums = [
+export const markColums = [
     {
         label: "#",
         field: "id",
