@@ -21,3 +21,4 @@ use Illuminate\Support\Facades\Route;
 Route::apiResource('admin/user', App\Http\Controllers\Admin\UserController::class)->middleware('auth:api');
 Route::apiResource('admin/client', App\Http\Controllers\Admin\ClientController::class)->middleware('auth:api');
 Route::apiResource('admin/departament', App\Http\Controllers\Admin\DepartamentController::class)->middleware('auth:api');
+Route::apiResource('admin/mark', App\Http\Controllers\Admin\MarkController::class)->middleware('auth:api');
