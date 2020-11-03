@@ -21,5 +21,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\Client::factory(3)->create();
         \App\Models\Departament::factory(2)->create();
         \App\Models\Mark::factory(2)->create();
+        $this->call(DeviceTypesSeeder::class);
+
     }
 }
