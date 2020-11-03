@@ -29,6 +29,8 @@ class DepartamentController extends Controller
 
     public function update(DepartamentStore $request, Departament $departament)
     {
+        dd($departament);
+
         $departament->update($request->all());
         return new DepartamentResource($departament);
     }
